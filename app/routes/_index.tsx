@@ -22,7 +22,7 @@ export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
       {items.map((item) => (
-        <div className="item-panel">
+        <div key={item.id} className="item-panel">
           <h3>{item.name}</h3>
           <p>{item.description}</p>
           <p>
