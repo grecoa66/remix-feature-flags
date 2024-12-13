@@ -1,11 +1,12 @@
 import { useLoaderData } from '@remix-run/react'
+import { InventoryItem } from '~/components/InventoryItem'
 import { inventoryList } from '~/data/inventory'
 
 export const loader = () => {
     // in lieu of a fetching from an external source...
     const inventoryItems = inventoryList
 
-    const showItemSku = process.env.SHOW_ITEM_SKU;
+    const showItemSku = process.env.SHOW_ITEM_SKU
 
     return { inventoryItems, showItemSku }
 }
@@ -20,22 +21,7 @@ export const InventoryPage = () => {
             </div>
             <div className="flex flex-col items-center gap-2 py-8">
                 {inventoryItems.map((item) => (
-                    <div
-                        key={item.id}
-                        className="border-black-200 flex w-96 flex-col gap-2 rounded-md border-2 bg-white p-4 shadow-md"
-                    >
-                        <p>Name: {item.name}</p>
-                        <p>Description: {item.description}</p>
-                        <p>Quantity: {item.quantity}</p>
-                        {showItemSku ? (<p>SKU: {item.sku}</p>): null}
-                        <div>
-                            <p>Location</p>
-                            <div className="ml-4">
-                                <p>Building: {item.location.building}</p>
-                                <p>Shelf: {item.location.shelf}</p>
-                            </div>
-                        </div>
-                    </div>
+                    <InventoryItem key={item.id} item={item} />
                 ))}
             </div>
         </div>

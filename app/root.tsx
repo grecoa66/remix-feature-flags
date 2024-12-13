@@ -7,9 +7,11 @@ import {
     Outlet,
     Scripts,
     ScrollRestoration,
+    useLoaderData,
 } from '@remix-run/react'
 
 import stylesheet from '~/tailwind.css'
+import { FeatureFlagProvider } from './context/FeatureFlagContext'
 
 export const links: LinksFunction = () => [
     ...(cssBundleHref
@@ -20,7 +22,15 @@ export const links: LinksFunction = () => [
         : [{ rel: 'stylesheet', href: stylesheet }]),
 ]
 
+export const loader = () => {
+    const showItemSku = process.env.SHOW_ITEM_SKU === 'true'
+
+    return { showItemSku }
+}
+
 export default function App() {
+    const { showItemSku } = useLoaderData<typeof loader>()
+
     return (
         <html lang="en">
             <head>
@@ -33,7 +43,9 @@ export default function App() {
                 <Links />
             </head>
             <body>
-                <Outlet />
+                <FeatureFlagProvider value={{ showItemSku }}>
+                    <Outlet />
+                </FeatureFlagProvider>
                 <ScrollRestoration />
                 <Scripts />
                 <LiveReload />
