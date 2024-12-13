@@ -1,15 +1,17 @@
 import { useLoaderData } from '@remix-run/react'
 import { inventoryList } from '~/data/inventory'
 
-export const loader = ({}) => {
-    // in lieu of a fetch
+export const loader = () => {
+    // in lieu of a fetching from an external source...
     const inventoryItems = inventoryList
 
-    return { inventoryItems }
+    const showItemSku = process.env.SHOW_ITEM_SKU;
+
+    return { inventoryItems, showItemSku }
 }
 
 export const InventoryPage = () => {
-    const { inventoryItems } = useLoaderData<typeof loader>()
+    const { inventoryItems, showItemSku } = useLoaderData<typeof loader>()
 
     return (
         <div className="relative flex min-h-screen flex-col items-center bg-slate-100">
@@ -25,6 +27,7 @@ export const InventoryPage = () => {
                         <p>Name: {item.name}</p>
                         <p>Description: {item.description}</p>
                         <p>Quantity: {item.quantity}</p>
+                        {showItemSku ? (<p>SKU: {item.sku}</p>): null}
                         <div>
                             <p>Location</p>
                             <div className="ml-4">
