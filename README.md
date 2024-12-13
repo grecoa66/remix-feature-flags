@@ -1,38 +1,10 @@
-# Welcome to Remix!
+### TODO
+Write a description of the project and how to use this readme
 
-- [Remix Docs](https://remix.run/docs)
+## Commit #1
+- Initial project setup. I used the CodeSandbox Remix template to initialize the project.
+- Added tailwind and required dependencies and configuration (https://tailwindcss.com/docs/guides/remix).
+- Create types and static data for inventory items.
+- Created the basic structure of the application in the `_index` route.
 
-## Development
-
-From your terminal:
-
-```sh
-npm run dev
-```
-
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+## Commit #2
