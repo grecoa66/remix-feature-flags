@@ -22,3 +22,9 @@ Write a description of the project and how to use this readme
 - Moved the access of the `SHOW_ITEM_SKU` env var to the root route.
   - Wrapped the root `<Outlet />` in the `FeatureFlagContext`. This provides the env var values to all child routes and components via React Context.
 - Accessing the context in the `<InventoryItem ... />` component. Using the value to conditionally render the SKU.
+
+## Commit $4
+- Add tiny-invariant package to check if route parameters and requested resources exist.
+- Added a serialized route for each inventory item.
+  - This route renders the `<InventoryItem ... />` component for a specific item.
+- This commit is setup for the final example of the blog post. This commit doesn't serve any educational purpose on its own. 
