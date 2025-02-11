@@ -11,9 +11,15 @@ export const loader = ({ params }: LoaderFunctionArgs) => {
 
     invariant(inventoryItem, 'Inventory item not found')
 
-    const showItemSku = process.env.SHOW_ITEM_SKU
+    const showItemPage = process.env.SHOW_ITEM_PAGE
 
-    return { inventoryItem, showItemSku }
+    if (!showItemPage) {
+        throw new Response(null, {
+            status: 404,
+            statusText: 'Not Found',
+        })
+    }
+    return { inventoryItem }
 }
 
 const InventoryItemPage = () => {

@@ -24,12 +24,13 @@ export const links: LinksFunction = () => [
 
 export const loader = () => {
     const showItemSku = process.env.SHOW_ITEM_SKU === 'true'
+    const showItemPage = process.env.SHOW_ITEM_PAGE === 'true'
 
-    return { showItemSku }
+    return { showItemSku, showItemPage }
 }
 
 export default function App() {
-    const { showItemSku } = useLoaderData<typeof loader>()
+    const { showItemSku, showItemPage } = useLoaderData<typeof loader>()
 
     return (
         <html lang="en">
@@ -43,7 +44,7 @@ export default function App() {
                 <Links />
             </head>
             <body>
-                <FeatureFlagProvider value={{ showItemSku }}>
+                <FeatureFlagProvider value={{ showItemSku, showItemPage }}>
                     <Outlet />
                 </FeatureFlagProvider>
                 <ScrollRestoration />
