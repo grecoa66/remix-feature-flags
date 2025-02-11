@@ -13,7 +13,7 @@ export const loader = ({ params }: LoaderFunctionArgs) => {
 
     const showItemPage = process.env.SHOW_ITEM_PAGE
 
-    if (!showItemPage) {
+    if (showItemPage === 'false') {
         throw new Response(null, {
             status: 404,
             statusText: 'Not Found',
