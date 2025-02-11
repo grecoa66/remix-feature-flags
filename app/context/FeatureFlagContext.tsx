@@ -2,6 +2,7 @@ import { ReactNode, createContext, useContext } from 'react'
 
 type FeatureFlagContextType = {
     showItemSku: boolean
+    showItemPage: boolean
 }
 
 export const FeatureFlagContext = createContext<
